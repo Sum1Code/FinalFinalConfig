@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [ ./gnome-rice.nix ];
   config = lib.mkIf config.system.desktop.gnome.enable {
     services.xserver = {
       enable = true;
@@ -12,6 +13,7 @@
     environment.systemPackages = with pkgs; [
       gnome-tweaks
       gnome-extension-manager
+      albert
     ];
 
     # Example: Remove bloatware
