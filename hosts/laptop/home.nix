@@ -11,7 +11,7 @@
 
   # State version should match your first install's version
   # Note: 25.11 is the future! You likely want "24.11" or "24.05"
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.11";
 
   # General GUI Apps
   home.packages = with pkgs; [

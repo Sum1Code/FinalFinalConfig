@@ -3,6 +3,7 @@
 {
   stylix = {
     enable = true;
+    targets.gnome.enable = true;
     # Set a blueish dark wallpaper to anchor the theme
     image = ../../hosts/laptop/assets/wallpaper.jpg;
 

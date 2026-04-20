@@ -2,6 +2,7 @@
 
 {
   config = lib.mkIf osConfig.system.desktop.gnome.enable {
+    gtk.gtk4.theme = null;
     # Extensions
     home.packages = with pkgs; [
       gnomeExtensions.dash-to-dock
