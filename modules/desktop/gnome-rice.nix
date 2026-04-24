@@ -8,6 +8,7 @@
       gnomeExtensions.dash-to-dock
       gnomeExtensions.blur-my-shell
       gnomeExtensions.gpu-supergfxctl-switch
+      gnomeExtensions.battery-health-charging
     ];
 
     # Stylix & GTK
@@ -29,6 +30,7 @@
           "dash-to-dock@micxgx.gmail.com"
           "blur-my-shell@aunetx"
           "gpu-switcher-supergfxctl@chikobara.github.io"
+          "Battery-Health-Charging@maniacx.github.com"
         ];
       };
 
