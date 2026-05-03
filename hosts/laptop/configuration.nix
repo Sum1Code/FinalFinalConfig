@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
 
 
@@ -25,10 +26,10 @@
   services.printing.enable = true;
   system.desktop.gnome.enable = true;
   services.asusd = {
-      enable = true;
-    };
+    enable = true;
+  };
 
-    apps.steam.enable = true;
+  apps.steam.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -37,17 +38,19 @@
   users.users.nael = {
     isNormalUser = true;
     description = "nael";
-    extraGroups = [ "networkmanager" "wheel" "video" "input" "docker"];
-	    packages = with pkgs; [
+    extraGroups = [ "networkmanager" "wheel" "video" "input" "docker" ];
+    shell = pkgs.zsh;
+    packages = with pkgs; [
       kdePackages.kate
       asusctl
 
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   programs.firefox.enable = true;
+  programs.zsh.enable = true;
   nixpkgs.config.allowUnfree = true;
 
   programs.nix-ld.enable = true;
@@ -57,38 +60,39 @@
     libsForQt5.qtstyleplugin-kvantum
     docker-compose
   ];
-
+  networking.nftables.enable = true;
   virtualisation.docker.enable = true;
   # Optional: Enable rootless mode for better security
   virtualisation.docker.rootless = {
     enable = true;
     setSocketVariable = true;
   };
+  virtualisation.waydroid.enable = true;
 
 
   hardware.graphics = {
-      enable = true;
+    enable = true;
+  };
+
+  services.flatpak.enable = true;
+  services.xserver.videoDrivers = [ "nvidia" ];
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = false;
+    powerManagement.finegrained = true;
+    open = true;
+    nvidiaSettings = true;
+
+    prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+      nvidiaBusId = "PCI:1:0:0";
+      intelBusId = "PCI:0:2:0";
     };
 
-    services.flatpak.enable = true;
-    services.xserver.videoDrivers = ["nvidia"];
-
-    hardware.nvidia = {
-        modesetting.enable = true;
-        powerManagement.enable = false;
-        powerManagement.finegrained = true;
-        open = true;
-        nvidiaSettings = true;
-
-        prime = {
-          offload = {
-            enable = true;
-            enableOffloadCmd = true;
-          };
-          nvidiaBusId = "PCI:1:0:0";
-          intelBusId = "PCI:0:2:0";
-        };
-
-};
-system.stateVersion = "25.11"; # Did you read the comment?
+  };
+  system.stateVersion = "25.11"; # Did you read the comment?
 }

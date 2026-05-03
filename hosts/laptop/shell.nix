@@ -5,6 +5,7 @@
     htop
     fastfetch
     nix-init
+    starship
   ];
 
   programs.git = {
@@ -23,6 +24,9 @@
     # Add syntax highlighting for a better ricing feel
     syntaxHighlighting.enable = true;
     dotDir = "${config.xdg.configHome}/zsh";
+    initContent = ''
+      eval "$(starship init zsh)"
+    '';
   };
   programs.direnv = {
     enable = true;
