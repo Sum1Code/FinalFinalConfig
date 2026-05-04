@@ -9,7 +9,7 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-
+      ./virtualization.nix
 
       ../../modules/core
       ../../modules/desktop
