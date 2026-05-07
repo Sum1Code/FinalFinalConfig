@@ -9,95 +9,43 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./virtualization.nix
+      ./asus.nix
 
       ../../modules/core
+      ../../modules/apps/virtualization.nix
       ../../modules/desktop
       ../../modules/apps/gaming
     ];
 
   #
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # Host identification
+  networking.hostName = "vrss";
 
-  networking.hostName = "vrss"; # Define your hostname.
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-  system.desktop.gnome.enable = true;
-  services.asusd = {
-    enable = true;
-  };
-
-  apps.steam.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  programs.zsh.enable = true;
   users.users.nael = {
     isNormalUser = true;
     description = "nael";
     extraGroups = [ "networkmanager" "wheel" "video" "input" "docker" ];
     shell = pkgs.zsh;
+    # These stay system-wide for now
     packages = with pkgs; [
       kdePackages.kate
-      asusctl
-
-      #  thunderbird
     ];
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  programs.firefox.enable = true;
-  programs.zsh.enable = true;
-  nixpkgs.config.allowUnfree = true;
-
-  programs.nix-ld.enable = true;
+  # System-wide packages
   environment.systemPackages = with pkgs; [
     wget
     zed-editor
-    libsForQt5.qtstyleplugin-kvantum
     docker-compose
   ];
-  networking.nftables.enable = true;
-  virtualisation.docker.enable = true;
-  # Optional: Enable rootless mode for better security
-  virtualisation.docker.rootless = {
-    enable = true;
-    setSocketVariable = true;
-  };
-  virtualisation.waydroid.enable = true;
 
+  # Desktop Setting
+  system.desktop.gnome.enable = true;
+  apps.steam.enable = true;
 
-  hardware.graphics = {
-    enable = true;
-  };
-
-  services.flatpak.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
-
-  services.displayManager.autoLogin = {
-    enable = true;
-    user = "nael";
-  };
-
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = true;
-    open = true;
-    nvidiaSettings = true;
-
-    prime = {
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
-      };
-      nvidiaBusId = "PCI:1:0:0";
-      intelBusId = "PCI:0:2:0";
-    };
-
-  };
-  system.stateVersion = "25.11"; # Did you read the comment?
+  # Nix Settings
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nixpkgs.config.allowUnfree = true;
+  system.stateVersion = "25.11";
 }

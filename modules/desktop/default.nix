@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports = [
@@ -8,7 +8,7 @@
 
   options.system.desktop = {
     gnome.enable = lib.mkEnableOption "GNOME Desktop";
-    kde.enable   = lib.mkEnableOption "KDE Plasma Desktop";
+    kde.enable = lib.mkEnableOption "KDE Plasma Desktop";
   };
 
   # Optional: Safety check to prevent enabling both
@@ -17,5 +17,6 @@
       assertion = false;
       message = "You cannot enable both GNOME and KDE at the same time!";
     }];
+
   };
 }

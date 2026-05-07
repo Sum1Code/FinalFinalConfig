@@ -19,5 +19,18 @@
       geary
       epiphany
     ];
+
+    # Desktop Essentials
+    services.printing.enable = true;
+    services.flatpak.enable = true;
+    programs.firefox.enable = true;
+
+
+    # Auto-login behavior
+    services.displayManager.autoLogin = {
+      enable = true;
+      user = "nael";
+    };
   };
+
 }
