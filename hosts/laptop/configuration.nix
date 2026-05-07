@@ -77,6 +77,11 @@
   services.flatpak.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "nael";
+  };
+
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = false;

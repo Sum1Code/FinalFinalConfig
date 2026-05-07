@@ -9,8 +9,6 @@
   home.username = "nael";
   home.homeDirectory = "/home/nael";
 
-  # State version should match your first install's version
-  # Note: 25.11 is the future! You likely want "24.11" or "24.05"
   home.stateVersion = "25.11";
 
   # General GUI Apps
@@ -20,6 +18,8 @@
     # The Nix tools you need for Zed to work
     nixd
     nixpkgs-fmt
+    wineWow64Packages.stagingFull
+    winetricks
   ];
 
   programs.lutris.enable = true;
