@@ -14,12 +14,9 @@
   # General GUI Apps
   home.packages = with pkgs; [
     mission-center
-    winboat
     # The Nix tools you need for Zed to work
     nixd
     nixpkgs-fmt
-    wineWow64Packages.stagingFull
-    winetricks
   ];
 
   programs.lutris.enable = true;

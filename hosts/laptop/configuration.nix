@@ -10,6 +10,7 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./asus.nix
+      ./overlay.nix
 
       ../../modules/core
       ../../modules/apps/virtualization.nix
@@ -27,10 +28,6 @@
     description = "nael";
     extraGroups = [ "networkmanager" "wheel" "video" "input" "docker" ];
     shell = pkgs.zsh;
-    # These stay system-wide for now
-    packages = with pkgs; [
-      kdePackages.kate
-    ];
   };
 
   # System-wide packages
