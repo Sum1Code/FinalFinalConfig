@@ -2,7 +2,7 @@
   description = "Single host NixOS flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05-beta";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs"; # Keep versions synced
