@@ -1,4 +1,4 @@
-{ pkgs, osConfig, config, lib, ... }:
+{ pkgs, osConfig, lib, ... }:
 
 {
   config = lib.mkIf osConfig.system.desktop.gnome.enable {
