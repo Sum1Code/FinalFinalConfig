@@ -1,0 +1,6 @@
+====
+
+Put all common home-manager configuartions here that you wish to share
+with all the users of this devide
+
+====

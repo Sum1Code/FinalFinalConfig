@@ -2,8 +2,9 @@
 
 {
   imports = [
-    ./shell.nix
-    ../../modules/desktop/gnome/gnome-rice.nix
+    ../modules/home/shell.nix
+    ../modules/home/desktop/gnome-rice.nix
+    ./home-packages.nix
   ];
 
   home.username = "nael";
@@ -11,11 +12,6 @@
 
   home.stateVersion = "25.11";
 
-  home.packages = with pkgs; [
-    mission-center
-    nixd
-    nixpkgs-fmt
-  ];
 
   programs.lutris.enable = true;
   programs.home-manager.enable = true;
