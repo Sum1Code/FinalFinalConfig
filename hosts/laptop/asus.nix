@@ -5,12 +5,13 @@
 
   # Asus Support
   services.asusd.enable = true;
-  environment.systemPackages = [ pkgs.asusctl ];
+  environment.systemPackages = [ pkgs.proton-vpn ];
 
   # Graphics Stack
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
-
+  hardware.nvidia-container-toolkit.mount-nvidia-executables = true;
+  hardware.nvidia-container-toolkit.enable = true;
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = false;

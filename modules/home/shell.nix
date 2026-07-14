@@ -17,7 +17,8 @@
     syntaxHighlighting.enable = true;
     dotDir = "${config.xdg.configHome}/zsh";
     initContent = ''
-      eval "$(starship init zsh)"
+      	export PATH="$PATH:$HOME/.cargo/bin"
+        eval "$(starship init zsh)"
     '';
   };
   programs.direnv = {

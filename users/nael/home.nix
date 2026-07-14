@@ -1,10 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [
-    ../modules/home/shell.nix
-    ../modules/home/desktop/gnome-rice.nix
+    ../../modules/home/shell.nix
+    ../../modules/home/desktop/gnome-rice.nix
     ./home-packages.nix
+    ./git.nix
   ];
 
   home.username = "nael";

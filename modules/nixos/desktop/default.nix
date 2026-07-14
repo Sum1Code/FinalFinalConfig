@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./gnome
+    ./gnome.nix
     ./kde.nix
   ];
 

@@ -1,10 +1,17 @@
 { pkgs, ... }: {
 
-  virtualisation.virtualbox.host.enableKvm = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
-  virtualisation.virtualbox.host.enable = true;
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu;
+      runAsRoot = true;
+      swtpm.enable = true; # Needed if you plan to use Windows 11/TPM
+    };
+  };
 
-  virtualisation.virtualbox.host.addNetworkInterface = false;
+  programs.virt-manager.enable = true;
+
+  networking.firewall.trustedInterfaces = [ "virbr0" ];
   users.users."nael".extraGroups = [ "libvirtd" "vboxusers" ];
 
   environment.systemPackages = with pkgs; [

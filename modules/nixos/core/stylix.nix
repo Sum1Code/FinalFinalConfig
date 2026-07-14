@@ -7,7 +7,7 @@
     targets.grub.enable = true;
     targets.grub.useWallpaper = true;
     # Set a blueish dark wallpaper to anchor the theme
-    image = ../../hosts/laptop/assets/wallpaper.jpg;
+    image = ../../../hosts/laptop/assets/wallpaper.jpg;
 
     # Choose the blueish dark theme
     base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";

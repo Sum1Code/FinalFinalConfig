@@ -11,7 +11,9 @@
       ./hardware-configuration.nix
       ./asus.nix
       ./overlay.nix
-      ../modules/nixos
+      ./nvf.nix
+      ../../users/nael
+      ../../modules/nixos
     ];
 
   #
@@ -25,11 +27,14 @@
     wget
     zed-editor
     docker-compose
-  ];
+    man-pages
+    man-pages-posix
 
+  ];
+  documentation.dev.enable = true;
   # Desktop Setting
   system.desktop.gnome.enable = true;
-  apps.steam.enable = true;
+  system.apps.steam.enable = true;
 
   # Nix Settings
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -39,6 +44,6 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.nael = import ../users/nael/home.nix;
+    users.nael = import ../../users/nael/home.nix;
   };
 }

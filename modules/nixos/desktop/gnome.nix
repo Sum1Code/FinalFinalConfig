@@ -27,10 +27,10 @@
 
 
     # Auto-login behavior
-    services.displayManager.autoLogin = {
-      enable = true;
-      user = "nael";
-    };
+    #   services.displayManager.autoLogin = {
+    #     enable = true;
+    #     user = "nael";
+    #   };
   };
 
 }

@@ -1,9 +1,9 @@
-{lib, ...}: {
+{ lib, ... }: {
   imports = [
     ./steam.nix
   ];
 
-  options.apps = {
+  options.system.apps = {
     steam.enable = lib.mkEnableOption "steam";
   };
 
